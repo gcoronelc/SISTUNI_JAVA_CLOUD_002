@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Campo de entrada:" />
+			<h:inputText value="#{ejemplo1Bean.nombre}">
+				<f:ajax event="keyup" render="dato dato2" />
+			</h:inputText>
+			
+			<h:outputLabel value="Dato ingresado:" />
+			<h:outputText id="dato" value="#{ejemplo1Bean.nombre}" />
+			
+			<h:outputLabel value="Dato ingresado:" />
+			<h:outputText id="dato2" value="#{ejemplo1Bean.nombre}" />
+			
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+  <h:form>
+    Sucursal:
+    <h:selectOneMenu value="#{ejemplo3Bean.sucursal}">
+      <f:selectItem itemValue="000" itemLabel="Selecciones sucursal"/>
+      <f:selectItems value="#{ejemplo3Bean.sucursales}"
+                     var="r"
+                     itemValue="#{r.codigo}"
+                     itemLabel="#{r.nombre}"/>
+      <f:ajax render="cuentas movimientos"
+        listener="#{ejemplo3Bean.cuentasListener}" />
+    </h:selectOneMenu>
+    <hr/>
+    Cuenta:
+    <h:selectOneMenu id="cuentas" value="#{ejemplo3Bean.cuenta}">
+      <f:selectItem itemValue="000" itemLabel="Selecciones cuenta"/>
+      <f:selectItems value="#{ejemplo3Bean.cuentas}"
+                     var="r"
+                     itemValue="#{r}"
+                     itemLabel="#{r}"/>
+      <f:ajax render="movimientos"
+        listener="#{ejemplo3Bean.movimientosListener}" />
+    </h:selectOneMenu>
+    <hr/>
+    <h:dataTable id="movimientos" value="${ejemplo3Bean.movimientos}"
+      var="item" border="1">
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="CUENTA" />
+        </f:facet>
+        <h:outputText value="#{item.cuenta}" />
+      </h:column>
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="NRO.MOV." />
+        </f:facet>
+        <h:outputText value="#{item.nromov}" />
+      </h:column>
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="TIPO" />
+        </f:facet>
+        <h:outputText value="#{item.tipo}" />
+      </h:column>
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="FECHA" />
+        </f:facet>
+        <h:outputText value="#{item.fecha}" />
+      </h:column>
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="IMPORTE" />
+        </f:facet>
+        <h:outputText value="#{item.importe}" />
+      </h:column>
+
+    </h:dataTable>
+  </h:form>
+</h:body> 
+</html>

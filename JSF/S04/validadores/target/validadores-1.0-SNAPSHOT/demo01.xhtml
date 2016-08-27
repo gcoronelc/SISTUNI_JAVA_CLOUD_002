@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  <h:head>
+    <title>Facelet Title</title>
+  </h:head>
+  <h:body>
+    <h:form>
+      <h1>DEMO 01</h1>
+      <h:panelGrid columns="3" border="1">
+        
+        <f:facet name="header">
+          <h:outputText value="Datos"/>
+        </f:facet>
+        
+        <h:outputLabel value="Entero:"/>
+        <h:inputText id="num1" value="#{demo01Controller.num1}" 
+                     required="true" 
+                     requiredMessage="Dato entero es obligatorio." 
+                     label="Número entero."/>
+        <h:message for="num1" style="color: red;" />
+        
+        <h:outputLabel value="Real:"/>
+        <h:inputText id="num2" value="#{demo01Controller.num2}" 
+                     required="true" requiredMessage="Dato real es obligatorio." />
+        <h:message for="num2" style="color: red;" />
+        
+        <h:outputLabel value="Cadena:"/>
+        <h:inputText id="cadena" value="#{demo01Controller.cadena}" 
+                     required="true" requiredMessage="Dato cadena es obligatorio." />
+        <h:message for="cadena" style="color: red;" />
+
+      </h:panelGrid>
+      
+      <h:commandButton value="Procesar" />
+    </h:form>
+  </h:body>
+</html>
+

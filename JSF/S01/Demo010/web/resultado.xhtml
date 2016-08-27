@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+		<title>Facelet Title</title>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+	</h:head>
+	<h:body>
+		<h1>SUMA</h1>
+		<table width="260" cellspacing="0">
+			<tr>
+				<td width="84">Número 1</td>
+				<td width="170">#{panchito.num1}</td>
+			</tr>
+			<tr>
+				<td>Número 2</td>
+				<td>#{panchito.num2}</td>
+			</tr>
+			<tr>
+				<td>Suma</td>
+				<td>#{panchito.suma}</td>
+			</tr>
+		</table>
+		<h:form>
+			<h:commandButton action="${panchito.doNuevo}" value="Retornar"/>
+		</h:form>
+	</h:body>
+</html>
+
