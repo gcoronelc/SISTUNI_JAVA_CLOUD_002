@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<h1>PAGINA 1</h1>
+	<h:form>
+		<div>
+			Nombre: 
+			<h:inputText value="#{demoController.nombre}" />
+			<h:commandButton action="#{demoController.doSaludo()}" value="Saludar" />
+		</div>
+		
+		<div>
+			<table>
+			
+				<c:forEach begin="1" end="10" step="1" var="n">
+				<tr>
+					<td>${n}</td>
+					<td><h:commandButton 
+					   action="#{factorialController.doCalcular(n)}" 
+					   value="Calcular" /></td>				
+				</tr>
+				</c:forEach>
+			
+			</table>
+		
+			
+		</div>
+		
+		<h:commandButton action="pagina2" value="Página 2" />
+	</h:form>
+</body> 
+</html>

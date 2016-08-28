@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+  <h:form>
+  
+    <h1>CONSULTAR CLIENTES</h1>
+    <h:panelGrid columns="5">
+    
+      <h:outputLabel value="Código" />
+      <h:outputLabel value="Paterno" />
+      <h:outputLabel value="Materno" />
+      <h:outputLabel value="Nombre" />
+      <h:outputLabel value="" />
+      
+      <h:inputText value="#{clienteController.cliente.codigo}" />
+      <h:inputText value="#{clienteController.cliente.paterno}" />
+      <h:inputText value="#{clienteController.cliente.materno}" />
+      <h:inputText value="#{clienteController.cliente.nombre}" />
+      <h:commandButton action="#{clienteController.doConsultar()}" 
+              value="Consultar" />
+    
+    </h:panelGrid>
+  
+    <h1>RESULTADO</h1>
+    <h:dataTable value="#{clienteController.lista}" var="r">
+    
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="CODIGO" />
+        </f:facet>
+        <h:outputText value="${r.codigo}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="PATERNO" />
+        </f:facet>
+        <h:outputText value="${r.paterno}" />
+      </h:column>
+
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="MATERNO" />
+        </f:facet>
+        <h:outputText value="${r.materno}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="NOMBRE" />
+        </f:facet>
+        <h:outputText value="${r.nombre}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="DNI" />
+        </f:facet>
+        <h:outputText value="${r.dni}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="DIRECCION" />
+        </f:facet>
+        <h:outputText value="${r.direccion}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="EMAIL" />
+        </f:facet>
+        <h:outputText value="${r.email}" />
+      </h:column>
+      
+      <h:column>
+        <f:facet name="header">
+          <h:outputText value="TELEFONO" />
+        </f:facet>
+        <h:outputText value="${r.telefono}" />
+      </h:column>
+      
+    </h:dataTable>
+  
+  </h:form>
+</body> 
+</html>
