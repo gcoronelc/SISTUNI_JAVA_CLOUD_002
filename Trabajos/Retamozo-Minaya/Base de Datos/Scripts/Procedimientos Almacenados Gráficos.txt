@@ -1,0 +1,45 @@
+drop procedure if exists reporte_grafico_totales;
+drop procedure if exists reporte_grafico_dias;
+drop procedure if exists reporte_grafico_mes;
+
+
+CREATE PROCEDURE reporte_grafico_totales()
+SELECT
+distinct monthname(v.Fecha) as mes ,
+ sum(p.precioventa-p.preciocosto) as total_utilidad, sum(v.totalpagar) as total_venta,
+	sum(c.total) as total_compra
+	from venta v inner join detalleventa dv on v.IdVenta = dv.IdVenta
+	inner join producto p on p.IdProducto = dv.IdProducto
+	inner join detallecompra dc on dc.IdProducto = p.IdProducto
+	inner join compra c on c.idcompra=dc.IdCompra
+	where year(v.Fecha) = year(curdate())
+		group by monthname(v.Fecha),p.IdProducto,v.IdVenta,c.idcompra
+		order by monthname(v.Fecha) desc
+			limit 1;
+			
+			
+			
+			
+			
+CREATE PROCEDURE reporte_grafico_dias()
+SELECT
+ v.fecha,dayname(v.Fecha) as mes, sum(v.totalpagar) as total_dia
+	from venta v inner join detalleventa dv on v.IdVenta = dv.IdVenta
+
+			where year(v.Fecha) = year(curdate())
+		group by v.fecha
+		order by day(v.Fecha) desc
+			limit 15;
+			
+			
+			
+			
+CREATE PROCEDURE reporte_grafico_mes()
+SELECT
+ monthname(v.Fecha) as mes, sum(v.totalpagar) as total_dia
+	from venta v inner join detalleventa dv on v.IdVenta = dv.IdVenta
+
+			where year(v.Fecha) = year(curdate())
+		group by monthname(v.Fecha)
+		order by month(v.Fecha) desc
+			limit 12;

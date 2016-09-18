@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../lista.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="5">
+
+                        <h:outputLabel value="ID" />
+                        <h:outputLabel value="Empleado" />
+                        <h:outputLabel value="Serie" />
+                        <h:outputLabel value="Estado" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{ventaController.venta.idVenta}" />
+                        <h:inputText value="#{ventaController.venta.empleado.apellido}" />
+                        <h:inputText value="#{ventaController.venta.serie}" />
+                        <h:inputText value="#{ventaController.venta.estado}" />
+                        <h:commandButton action="#{ventaController.dolistarVentas()}"
+                                         value="Consultar" />
+
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Nuevo Venta" actionListener="#{ventaController.prepararNuevaVenta()}"
+                                     oncomplete="PF('dialogNuevaVenta').show();"
+                                     update=":formNuevaVenta"/>
+                </h:form>
+
+                <h:form id="formMostrarVenta">
+                    <p:growl id="msg" showDetail="true"/>
+                    <p:dataTable id="tablaVenta" paginator="true" editable="true" style="margin-bottom:20px"
+                                 var="v" value="#{ventaController.lista}" emptyMessage="No hay datos del cliente">
+
+                        <p:ajax event="rowEdit" listener="#{clienteController.actualizar}" update=":formMostrarVenta:msg" />
+                        <p:ajax event="rowEditCancel" listener="#{clienteController.cancelar}" update=":formMostrarVenta:msg" />
+
+                        <p:column headerText="Id-Cliente">
+                            <h:outputText value="#{v.idVenta}"/>
+                        </p:column>
+
+                        <p:column headerText="Tipo Documento">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{v.tipoDocumento.descripcion}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{v.estado}" style="width:100%">
+                                        <f:selectItems value=""/>
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Cliente">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{v.cliente.nombre}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{v.estado}" style="width:100%">
+                                        <f:selectItems value=""/>
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Empleado">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{v.empleado.apellido} #{v.empleado.apellido}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{v.estado}" style="width:100%">
+                                        <f:selectItems value=""/>
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Serie">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{v.serie}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{v.serie}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column headerText="Serie">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{v.serie}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{v.serie}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{v.fecha}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Total Venta">
+                            <h:outputText value="#{v.totalVenta}"/>
+                        </p:column>
+
+                        <p:column headerText="Igv">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{v.igv}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <p:inputNumber value="#{v.igv}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        
+                        <p:column headerText="Total Pargar">
+                            <h:outputText value="#{v.totalPagar}"/>
+                        </p:column>
+
+                        <p:column headerText="Estado">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{v.estado}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{v.estado}" style="width:100%">
+                                        <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO"/>
+                                        <f:selectItem itemLabel="DESACTIVADO" itemValue="DESACTIVADO"/>
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column style="width: 32px;">
+                            <p:rowEditor />
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+
+                <h:form id="formNuevoCliente">
+                    <p:dialog id="dlgNuevoCliente" widgetVar="dialogNuevoCliente" 
+                              resizable="false" showEffect="explode" hideEffect="explode" 
+                              modal="true">
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel value="Codigo"/>
+                            <p:inputText  value="#{clienteController.cliente.idCliente}"/>
+
+                            <p:outputLabel value="Nombre"/>
+                            <p:inputText  value="#{clienteController.cliente.nombre}"/>
+
+                            <p:outputLabel value="Ruc"/>
+                            <p:inputText maxlength="11" value="#{clienteController.cliente.ruc}"/>
+
+                            <p:outputLabel value="Dni"/>
+                            <p:inputText maxlength="8" value="#{clienteController.cliente.dni}"/>
+
+                            <p:outputLabel value="Direccion"/>
+                            <p:inputText value="#{clienteController.cliente.direccion}"/>
+
+                            <p:outputLabel value="Telefono"/>
+                            <p:inputText maxlength="9" value="#{clienteController.cliente.telefono}"/>
+
+                            <p:outputLabel value="Observacion"/>
+                            <p:inputText value="#{clienteController.cliente.obs}"/>
+
+                            <p:outputLabel value="Usuario"/>
+                            <p:inputText value="#{clienteController.cliente.usuario}"/>
+
+                            <p:outputLabel value="Contraseña"/>
+                            <p:inputText value="#{clienteController.cliente.contraseña}"/>
+                        </p:panelGrid>
+                        <p:commandButton value="Guardar" actionListener="#{clienteController.nuevoCliente()}"
+                                         update=":formMostrarCliente:tablaCliente" 
+                                         oncomplete="PF('dialogNuevoCliente').hide();"/>
+
+                        <p:commandButton value="Cancelar" onclick="PF('dialogNuevoCliente').hide();"/>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

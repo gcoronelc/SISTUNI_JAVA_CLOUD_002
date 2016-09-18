@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="navbar">
+                <div id="top">
+                    <ui:insert name="top"></ui:insert>
+
+                    <h:commandLink action="./../../Menu.xhtml">
+                        <h:graphicImage name="./imagenes/Logo.png" style="float: left; margin-top: -5px;"/>
+                    </h:commandLink>
+                    
+                    <div class="float_right">
+                        <p:menubar class="nav">
+
+                            <p:menuitem value="Cliente" action="#{clienteController.doListar()}" icon="ui-icon-pencil"/>
+
+                            <p:menuitem value="Venta" action="#{ventaController.dolistarVentas()}" icon="ui-icon-help"/>
+
+                            <p:menuitem value="Categoria" action="#{categoriaController.listarCategoria()}" icon="ui-icon-gear"/>
+
+                            <p:menuitem value="Detalle de Venta" action="#{detalleVentaController.doListarDetalleVenta()}"/>
+
+                            <p:menuitem value="Producto" action="#{productoController.dolistarProducto()}"/>
+
+                            <p:menuitem value="Empleado" action="#{empleadoController.doListarEmpleados()}"/>
+
+                            <p:menuitem value="Detalle de Compra" />
+
+                            <p:menuitem value="Compra" />
+
+                            <p:menuitem value="Tipo de Documento" />
+
+                            <p:menuitem value="Proveedor" />
+
+                            <p:menuitem value="Tipo de Usuario" />
+
+                            <p:menuitem value="Salir" url="" icon="ui-icon-close" action="../index.xhtml"/>
+                        </p:menubar>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+        <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        
+            <div id="bottom">
+                <ui:insert name="bottom">&copy; Uni503 2016</ui:insert>
+            </div>
+    </h:body>
+</html>
+
+

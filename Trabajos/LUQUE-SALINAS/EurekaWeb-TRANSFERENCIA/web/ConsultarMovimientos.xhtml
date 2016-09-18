@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <body> 
+        <ui:composition template="./plantilla/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+
+                    <h1>CONSULTAR MOVIMIENTOS</h1>
+                    <h:panelGrid columns="5">
+
+                        <h:outputLabel value="CODIGO" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{movimientoController.movimiento.cuencodigo}" 
+                                     required="true" requiredMessage="Ingrese el codigo de la cuenta"/>
+                        <h:commandButton action="#{movimientoController.doConsultar()}" 
+                                         value="Consultar" />
+                    </h:panelGrid>
+                </h:form>
+
+                <c:if test="${movimientoController.lista != null}">
+                    <br/>
+                    <p:panelGrid columns="3" >
+                        <f:facet name="header">
+                            MOVIMIENTOS
+                        </f:facet>
+                        <br/>
+                        <h:dataTable border="3" value="#{movimientoController.lista}" var="r">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="FECHA" />
+                                </f:facet>
+                                <h:outputText value="${r.movifecha}" />
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="EMPLEADO" />
+                                </f:facet>
+                                <h:outputText value="${r.emplcodigo}" />
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="TIPO DE TRANSACCION" />
+                                </f:facet>
+                                <h:outputText value="${r.tipocodigo}" />
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="TIPO DE TRANSACCION" />
+                                </f:facet>
+                                <h:outputText value="${r.tipoaccion}" />
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IMPORTE" />
+                                </f:facet>
+                                <h:outputText value="${r.moviimporte}" />
+                            </h:column>
+                        </h:dataTable>
+                    </p:panelGrid>
+                </c:if>
+
+            </ui:define>
+        </ui:composition>
+    </body> 
+</html>

@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#menu-wrapper ul{
+    padding: 0;
+    list-style: none;
+}
+#hmenu > li{
+    display: inline-block;
+}
+#hmenu > li > a{
+    display: block;
+    padding: 10px 5px;
+    width: 90px;
+}
+li ul{
+    position: absolute;
+}

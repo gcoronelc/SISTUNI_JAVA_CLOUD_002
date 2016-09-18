@@ -1,0 +1,55 @@
+--sp_Empleado_Adicionar
+
+CREATE OR REPLACE PROCEDURE sp_Empleado_Adicionar( id IN CHAR,nom IN VARCHAR2,ape IN VARCHAR2,ema IN VARCHAR2,usu IN VARCHAR2,pas IN VARCHAR2 )
+IS
+        
+BEGIN
+
+INSERT INTO EMPLEADOS (IDEMPLEADO,NOMBRE,APELLIDOS,EMAIL,USUARIO,CLAVE) VALUES (id,nom,ape,ema,usu,pas);
+	
+END sp_Empleado_Adicionar;
+
+--sp_Empleado_Actualizar
+
+CREATE OR REPLACE PROCEDURE sp_Empleado_Actualizar( id IN CHAR,nom IN VARCHAR2,ape IN VARCHAR2,ema IN VARCHAR2,usu IN VARCHAR2,pas IN VARCHAR2)
+IS
+       
+BEGIN
+
+UPDATE EMPLEADOS SET NOMBRE=nom,APELLIDOS=ape,EMAIL=ema,USUARIO=usu,CLAVE=pas WHERE IDEMPLEADO = id;
+	
+END sp_Empleado_Actualizar;
+
+
+--sp_Empleado_eliminar
+
+CREATE OR REPLACE PROCEDURE sp_Empleado_Eliminar(id IN CHAR)
+IS
+       
+BEGIN
+
+DELETE FROM EMPLEADOS WHERE IDEMPLEADO = id;
+	
+END sp_Empleado_Eliminar;
+
+BEGIN
+EXECUTE sp_Empleado_Eliminar 'E0010';
+END
+
+
+
+CREATE OR REPLACE PROCEDURE sp_Empleado_Listar(PARM1 VARCHAR2 ,p_recordset OUT SYS_REFCURSOR)
+IS
+       
+BEGIN
+
+OPEN p_recordset FOR
+SELECT * FROM EMPLEADOS;
+	
+END sp_Empleado_Listar;
+
+
+
+BEGIN
+EMPRESA.sp_Empleado_Listar(:p_recordset$REFCURSOR);
+END;

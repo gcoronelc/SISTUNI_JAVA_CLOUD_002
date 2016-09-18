@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../lista.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="Código" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{tipoDocuController.tipoDocumento.idTipoDocu}" />
+                        <h:commandButton action="#{tipoDocuController.listarTipoDocumentos()}"
+                                         value="Consultar" />
+
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Nuevo Documento" 
+                                     actionListener="#{tipoDocuController.prepararNuevoDocumento()}"
+                                     oncomplete="PF('dialogNuevoDocu').show();"
+                                     update=":formNuevoDocu"/>
+                </h:form>
+
+                <h:form id="formMostrarDocu">
+                    <p:growl id="msg" showDetail="true"/>
+                    <p:dataTable id="tablaDocu" paginator="true" rows="5" editable="true" style="margin-bottom:20px"
+                                 var="t" value="#{tipoDocuController.listaTipoDocu}" 
+                                 emptyMessage="No hay datos del Documento">
+
+                        <p:ajax event="rowEdit" listener="#{tipoDocuController.actualizar}" 
+                                update=":formMostrarDocu:msg" />
+                        <p:ajax event="rowEditCancel" listener="#{tipoDocuController.cancelar}" 
+                                update=":formMostrarDocu:msg" />
+                        
+                        <p:column>
+                            <p:selectBooleanCheckbox value="#{t.selec}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Id-Categoria">
+                            <h:outputText value="#{t.idTipoDocu}"/>
+                        </p:column>
+
+                        <p:column headerText="Descripcion">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{t.descripcion}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{t.descripcion}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column style="width: 32px;">
+                            <p:rowEditor />
+                        </p:column>
+
+                    </p:dataTable>
+                    
+                    <p:commandButton value="Eliminar" actionListener="#{tipoDocuController.eliminarCategoria()}" 
+                                     update="formMostrarDocu" icon="ui-icon-trash">
+                        <p:confirm message="Seguro que quieres Eliminar?" 
+                                   header="Aviso" icon="ui-icon.alert"/>
+                    </p:commandButton>
+                    
+                    <p:confirmDialog global="true">
+                        <p:commandButton value="SI" type="button" icon="ui-icon-check" 
+                                         styleClass="ui-confirmdialog-yes"/>
+                        <p:commandButton value="NO" type="button" icon="ui-icon-close" 
+                                         styleClass="ui-confirmdialog-no"/>
+                    </p:confirmDialog>
+                </h:form>
+
+                <h:form id="formNuevoDocu">
+                    <p:dialog id="dlgNuevoDocu" widgetVar="dialogNuevoDocu" 
+                              resizable="false" showEffect="explode" hideEffect="explode" 
+                              modal="true">
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel value="Descripcion"/>
+                            <p:inputText  value="#{tipoDocuController.tipoDocumento.descripcion}"/>
+                            
+                        </p:panelGrid>
+                        <p:commandButton value="Guardar" actionListener="#{tipoDocuController.registrarCategoria()}"
+                                         update=":formMostrarDocu:tablaDocu" 
+                                         oncomplete="PF('dialogNuevoDocu').hide();"/>
+
+                        <p:commandButton value="Cancelar" onclick="PF('dialogNuevoDocu').hide();"/>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+

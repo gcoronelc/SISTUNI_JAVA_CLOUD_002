@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../lista.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="5">
+
+                        <h:outputLabel value="Código" />
+                        <h:outputLabel value="Dni" />
+                        <h:outputLabel value="Nombre" />
+                        <h:outputLabel value="Usuario" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{clienteController.cliente.idCliente}" />
+                        <h:inputText value="#{clienteController.cliente.dni}" />
+                        <h:inputText value="#{clienteController.cliente.nombre}" />
+                        <h:inputText value="#{clienteController.cliente.usuario}" />
+                        <h:commandButton action="#{clienteController.doListar()}"
+                                         value="Consultar" />
+
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Nuevo Cliente" actionListener="#{clienteController.prepararNuevoCliente()}"
+                                     oncomplete="PF('dialogNuevoCli').show();"
+                                     update=":formNuevoCli"/>
+                </h:form>
+
+
+                <h:form id="formMostrarCli">
+                    <p:dataTable id="tablaCli" rows="5" paginator="true" editable="true" style="margin-bottom:20px"
+                                 var="c" value="#{clienteController.lista}" 
+                                 emptyMessage="No hay datos del cliente">
+
+                        <p:column headerText="Id-Categoria">
+                            <h:outputText value="#{c.idCliente}"/>
+                        </p:column>
+
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{c.nombre}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Ruc">
+                            <h:outputText value="#{c.ruc}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Dni">
+                            <h:outputText value="#{c.dni}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Telefono">
+                            <h:outputText value="#{c.telefono}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Observacion">
+                            <h:outputText value="#{c.obs}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Usuario">
+                            <h:outputText value="#{c.usuario}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Editar">
+                            <p:commandButton value="Modificar" oncomplete="PF('dialogModificarCli').show();" 
+                                update=":formModificarCli">
+                                <f:setPropertyActionListener target="#{clienteController.cliente}" value="#{c}"/>
+                            </p:commandButton>
+                        </p:column>
+                        
+                        <p:column headerText="Eliminar">
+                            <p:commandButton value="Eliminar" oncomplete="PF('dialogEliminarCli').show();" 
+                                             update=":formEliminarCli">
+                                <f:setPropertyActionListener target="#{clienteController.cliente}" value="#{c}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+
+                <h:form id="formNuevoCli">
+                    <p:dialog id="dlgNuevoCli" widgetVar="dialogNuevoCli" 
+                              resizable="false"  showEffect="explode" hideEffect="explode" 
+                              modal="true">
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel style="color: red" value="Nombre"/>
+                            <p:inputText  value="#{clienteController.cliente.nombre}"/>
+                            
+                            <p:outputLabel value="Ruc"/>
+                            <p:inputText maxlength="11" value="#{clienteController.cliente.ruc}"/>
+                            
+                            <p:outputLabel value="Dni"/>
+                            <p:inputText maxlength="8" value="#{clienteController.cliente.dni}"/>
+                            
+                            <p:outputLabel value="Direccion"/>
+                            <p:inputText maxlength="25" value="#{clienteController.cliente.direccion}"/>
+                            
+                            <p:outputLabel value="Telefono"/>
+                            <p:inputText maxlength="9" value="#{clienteController.cliente.telefono}"/>
+                            
+                            <p:outputLabel value="Observacion"/>
+                            <p:inputText maxlength="30" value="#{clienteController.cliente.obs}"/>
+                            
+                            <p:outputLabel value="Usuario"/>
+                            <p:inputText maxlength="25" value="#{clienteController.cliente.usuario}"/>
+                            
+                            <p:outputLabel value="Contraseña"/>
+                            <p:password maxlength="20" value="#{clienteController.cliente.contraseña}"/>
+
+                        </p:panelGrid>
+                        <p:commandButton value="Guardar" actionListener="#{clienteController.registrarCliente()}"
+                                         update=":formMostrarCli:tablaCli" 
+                                         oncomplete="PF('dialogNuevoCli').hide();"/>
+
+                        <p:commandButton value="Cancelar" onclick="PF('dialogNuevoCli').hide();"/>
+                    </p:dialog>
+                </h:form>
+                
+                <h:form id="formModificarCli">
+                    <p:dialog id="dlgModificarCli" widgetVar="dialogModificarCli" 
+                              resizable="false"  showEffect="explode" hideEffect="explode" 
+                              modal="true">
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel style="color: red" value="Nombre"/>
+                            <p:inputText  value="#{clienteController.cliente.nombre}"/>
+                            
+                            <p:outputLabel value="Ruc"/>
+                            <p:inputText maxlength="11" value="#{clienteController.cliente.ruc}"/>
+                            
+                            <p:outputLabel value="Dni"/>
+                            <p:inputText maxlength="8" value="#{clienteController.cliente.dni}"/>
+                            
+                            <p:outputLabel value="Direccion"/>
+                            <p:inputText maxlength="25" value="#{clienteController.cliente.direccion}"/>
+                            
+                            <p:outputLabel value="Telefono"/>
+                            <p:inputText maxlength="9" value="#{clienteController.cliente.telefono}"/>
+                            
+                            <p:outputLabel value="Observacion"/>
+                            <p:inputText maxlength="30" value="#{clienteController.cliente.obs}"/>
+                            
+                            <p:outputLabel value="Usuario"/>
+                            <p:inputText maxlength="25" value="#{clienteController.cliente.usuario}"/>
+                            
+                            <p:outputLabel value="Contraseña"/>
+                            <p:password maxlength="20" value="#{clienteController.cliente.contraseña}"/>
+
+                        </p:panelGrid>
+                        <p:commandButton value="Guardar" actionListener="#{clienteController.actualizar()}"
+                                         update=":formMostrarCli:tablaCli" 
+                                         oncomplete="PF('dialogModificarCli').hide();"/>
+
+                        <p:commandButton value="Cancelar" onclick="PF('dialogModificarCli').hide();"/>
+                    </p:dialog>
+                </h:form>
+                
+                <h:form id="formEliminarCli">
+                    <p:dialog id="dlgEliminarCli" widgetVar="dialogEliminarCli" 
+                              resizable="false"  showEffect="explode" hideEffect="explode" 
+                              modal="true">
+                            <h:outputText value="Desea eliminar a este cliente?"/>
+                            <br/>
+                        <p:commandButton value="SI" actionListener="#{clienteController.eliminarCliente()}"
+                                         update=":formMostrarCli:tablaCli" 
+                                         oncomplete="PF('dialogEliminarCli').hide();"/>
+
+                        <p:commandButton value="NO" onclick="PF('dialogEliminarCli').hide();"/>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../lista.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <div>
+                        <div>
+                            <div id="titulo_bar">
+                                <div id="pag_titulo">Lista de Categorias</div>
+                                <div id="insertar_button">
+                                    <h:commandLink class="thickbox none alt_n">
+                                        <h:commandButton class="btn btn-primary" 
+                                                         style="float: right;" value="Nueva Categoria"/>
+                                    </h:commandLink>
+                                </div>
+                            </div>
+                            <div id="tabla_accion">
+                                <ul>
+                                    <li class="pull-left">
+                                        <h:commandButton class="btn btn-warning" value="Borrar"/>
+                                    </li>
+                                    <li class="float_right">
+                                        <h:inputText value="#{categoriaController.categoria.idCategoria}"/>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="tabla_holder">
+
+                                <h:dataTable class="tablesorter table-striped table-bordered" id="sortable_table" 
+                                             headerClass="order-table-header"
+                                             value="#{categoriaController.listaCategoria}" var="c">
+                                    <h:column >
+                                        <f:facet name="header">
+                                            <p:selectBooleanCheckbox id="select_all"/>
+                                        </f:facet>
+                                        <center><p:selectBooleanCheckbox label="${c.idCategoria}"/></center>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Id-Categoria"/>
+                                        </f:facet>
+                                        <center><h:outputText value="${c.idCategoria}" style="cursor: pointer"/></center>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Descripcion"/>
+                                        </f:facet>
+                                        <center><h:outputText value="${c.descripcion}" style="cursor: pointer"/></center>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Editar"/>
+                                        </f:facet>
+                                        <center><h:link>Editar</h:link></center>
+                                    </h:column>
+                                </h:dataTable>
+                            </div>
+                            <div></div>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

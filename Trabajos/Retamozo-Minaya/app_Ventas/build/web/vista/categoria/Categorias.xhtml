@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../lista.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <div align="center">
+                        <h1 style="font-size: 40px">Lista de Categoria</h1>
+                        <br/>
+                    </div>
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="Código" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{categoriaController.categoria.idCategoria}" />
+                        <h:commandButton action="#{categoriaController.listarCategoria()}"
+                                         value="Consultar" />
+
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Nueva Categoria" 
+                                     actionListener="#{categoriaController.prepararNuevaCategoria()}"
+                                     oncomplete="PF('dialogNuevaCate').show();"
+                                     update=":formNuevaCate"/>
+                </h:form>
+
+                <h:form id="formMostrarCate">
+                    <p:growl id="msg" showDetail="true"/>
+                    <p:dataTable id="tablaCate" paginator="true" rows="5" editable="true" style="margin-bottom:20px"
+                                 var="c" value="#{categoriaController.listaCategoria}" 
+                                 emptyMessage="No hay datos del Documento">
+
+                        <p:ajax event="rowEdit" listener="#{categoriaController.actualizar}" 
+                                update=":formMostrarCate:msg" />
+                        <p:ajax event="rowEditCancel" listener="#{categoriaController.cancelar}" 
+                                update=":formMostrarCate:msg" />
+                        
+                        <p:column>
+                            <p:selectBooleanCheckbox value="#{c.seleccionar}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Id-Categoria">
+                            <h:outputText value="#{c.idCategoria}"/>
+                        </p:column>
+
+                        <p:column headerText="Descripcion">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{c.descripcion}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText value="#{c.descripcion}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column style="width: 32px;">
+                            <p:rowEditor />
+                        </p:column>
+
+                    </p:dataTable>
+                    
+                    <p:commandButton value="Eliminar" actionListener="#{categoriaController.eliminarCategoria()}" 
+                                     update="formMostrarCate" icon="ui-icon-trash">
+                        <p:confirm message="Seguro que quieres Eliminar?" 
+                                   header="Aviso" icon="ui-icon.alert"/>
+                    </p:commandButton>
+                    
+                    <p:confirmDialog global="true">
+                        <p:commandButton value="SI" type="button" icon="ui-icon-check" 
+                                         styleClass="ui-confirmdialog-yes"/>
+                        <p:commandButton value="NO" type="button" icon="ui-icon-close" 
+                                         styleClass="ui-confirmdialog-no"/>
+                    </p:confirmDialog>
+                </h:form>
+
+                <h:form id="formNuevaCate">
+                    <p:dialog id="dlgNuevaCate" widgetVar="dialogNuevaCate" 
+                              resizable="false" showEffect="explode" hideEffect="explode" 
+                              modal="true">
+                        <p:panelGrid columns="2" style="margin: 0 auto;">
+
+                            <p:outputLabel value="Descripcion"/>
+                            <p:inputText  value="#{categoriaController.categoria.descripcion}"/>
+                        </p:panelGrid>
+                        <p:commandButton value="Guardar" actionListener="#{categoriaController.registrarCategoria()}"
+                                         update=":formMostrarCate:tablaCate" 
+                                         oncomplete="PF('dialogNuevaCate').hide();"/>
+
+                        <p:commandButton value="Cancelar" onclick="PF('dialogNuevaCate').hide();"/>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

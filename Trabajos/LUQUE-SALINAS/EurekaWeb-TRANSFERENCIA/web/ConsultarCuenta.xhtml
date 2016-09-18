@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+    <h:head></h:head> 
+    <body> 
+        <ui:composition template="./plantilla/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form>
+
+                    <h1>CONSULTAR CUENTA</h1>
+                    <h:panelGrid columns="5">
+                        <h:outputLabel value="NUMERO CUENTA" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{cuentaController.cuenta.cuencodigo}" />
+                        <h:commandButton action="#{cuentaController.doConsultar()}" 
+                                         value="Consultar" />
+
+                    </h:panelGrid>
+                    <br />
+                    <h1>RESULTADO</h1>
+                    <br />
+                    <h:dataTable border="4" value="#{cuentaController.lista}" var="r">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CODIGO" />
+                            </f:facet>
+                            <h:outputText value="${r.cuencodigo}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="MONEDA" />
+                            </f:facet>
+                            <h:outputText value="${r.monecodigo}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="SUCURSAL" />
+                            </f:facet>
+                            <h:outputText value="${r.sucucodigo}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="EMPLEADO" />
+                            </f:facet>
+                            <h:outputText value="${r.emplcreacuenta}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="CLIENTE" />
+                            </f:facet>
+                            <h:outputText value="${r.cliecodigo}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="SALDO" />
+                            </f:facet>
+                            <h:outputText value="${r.cuensaldo}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="FECHA CREACION" />
+                            </f:facet>
+                            <h:outputText value="${r.cuenfechacreacion}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="ESTADO CUENTA" />
+                            </f:facet>
+                            <h:outputText value="${r.cuenestado}" />
+                        </h:column>
+                    </h:dataTable>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body> 
+</html>

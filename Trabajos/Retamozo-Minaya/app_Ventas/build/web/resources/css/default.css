@@ -1,0 +1,212 @@
+
+.navbar{
+    margin-bottom: 20px;
+    overflow: visible;
+}
+
+.nav{
+    margin-top: 20px !important;
+    margin-left: 0;
+    list-style: none;
+}
+
+ul, ol {
+    padding: 0;
+    margin: 0 0 10px 25px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+user agent stylesheet
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+body {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+}
+h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}
+
+h5{
+    font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height:  20px;
+    color: inherit;
+}
+img{
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+}
+
+div{
+    display: block;
+}
+
+li{
+    line-height: 20px;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+a:link, a:visited {
+  color: #045491;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #045491;
+  font-weight : bold;
+  text-decoration : underline;
+}
+.ui-menu, .ui-menu .ui-menu-child{
+    background: #f89406;
+}
+.float_right{
+    float: right;
+}
+.pull-left{
+    float: left;
+}
+.radio-5px{
+    border-radius: 5px;
+}
+
+.btn:first-child {
+}
+button.btn, input[type="submit"].btn {
+}
+.btn-warning {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+    background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+    background-image: -o-linear-gradient(top, #fbb450, #f89406);
+    background-image: linear-gradient(to bottom, #fbb450, #f89406);
+    background-repeat: repeat-x;
+    border-color: #f89406 #f89406 #ad6704;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn {
+    border-color: #c5c5c5;
+    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+}
+.btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    border: 1px solid #bbbbbb;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-bottom-color: #a2a2a2;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    display: inline-block;
+    height: 20px;
+    padding: 4px 6px;
+    /* margin-bottom: 10px; */
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+    vertical-align: middle;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+input, textarea, .uneditable-input {
+    margin-left: 0;
+}
+input, textarea, .uneditable-input {
+    width: 206px;
+}
+input, button, select, textarea {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+label, input, button, select, textarea {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+button, input {
+    line-height: normal;
+}
+button, input, select, textarea {
+    margin: 0;
+    font-size: 100%;
+    vertical-align: middle;
+}
+input {
+    font-family: arial;
+    padding: 3px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+#logon {
+	border: 1px #424242 solid;
+	width: 400px;
+	margin: 10px auto;
+	padding: 10px;
+	color: #424242;
+}
+</style>
+</h:head>
+<body>
+	<div id="logon">
+		<h:form>
+			<img src="./img/logo.gif" />
+			<h1>INGRESO AL SISTEMA</h1>
+			
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+			
+			<p:panel id="basic" header="Ingreso">
+				<p:panelGrid columns="2">
+
+					<p:outputLabel value="User:" />
+					<p:inputText value="#{logonController.usuario}" />
+
+					<p:outputLabel value="Password:" />
+					<p:password value="#{logonController.clave}" />
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column colspan="2">
+								<p:commandButton value="Ingresar" icon="ui-icon-disk"
+									ajax="false" action="#{logonController.doLogonProcesar()}" />
+							</p:column>
+						</p:row>
+					</f:facet>
+
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+	</div>
+</body>
+</html>

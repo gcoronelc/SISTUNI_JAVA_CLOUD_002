@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:growl id="messages"/>
+            <p:menubar>
+                <p:submenu label="Archivo">
+                    <p:menuitem value="Salir" url="index.xhtml" />
+                </p:submenu>
+
+                <p:submenu label="Procesos" icon="ui-icon-calculator">
+                    <p:menuitem value="Depositar" url="#" />
+                    <p:menuitem value="Transferencia" url="Transferencia.xhtml" />
+                    <p:separator />
+                    <p:menuitem value="Crear Cliente" action="NuevoCliente" />
+                    <p:menuitem value="Crear Empleado" action="NuevoEmpleado" />
+                    <p:menuitem value="Crear Sucursal" action="NuevoSucursal" />
+                </p:submenu>
+
+                <p:submenu label="Tablas" icon="ui-icon-calculator">
+                    <p:menuitem value="Clientes" url="clientes.xhtml" />
+                    <p:menuitem value="Empleados" url="empleados.xhtml" />
+                    <p:menuitem value="Sucursales" url="sucursales.xhtml" />
+                </p:submenu>
+
+                <p:submenu label="Consultas" icon="ui-icon-calculator">
+                    <p:menuitem value="Clientes" url="ConsultarCliente.xhtml" />
+                    <p:menuitem value="Empleados" url="ConsultarEmpleados.xhtml" />
+                    <p:menuitem value="Cuenta" url="ConsultarCuenta.xhtml" />
+                    <p:menuitem value="Movimientos" url="ConsultarMovimientos.xhtml" />
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+    </h:body>
+    <script type="text/javascript">
+
+        function fnLoadPage(pagina) {
+            $("#divWORK").load(pagina);
+        }
+
+    </script>
+</html>

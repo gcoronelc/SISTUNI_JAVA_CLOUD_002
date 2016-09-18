@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body> 
+        <ui:composition template="./plantilla/plantilla.xhtml">
+            <ui:define name="content">
+
+                <h:form>
+
+                    <h1>CONSULTAR EMPLEADOS</h1>
+                    <h:panelGrid columns="5">
+
+                        <h:outputLabel value="Código" />
+                        <h:outputLabel value="Paterno" />
+                        <h:outputLabel value="Materno" />
+                        <h:outputLabel value="Nombre" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{empleadoController.empleado.codigo}" />
+                        <h:inputText value="#{empleadoController.empleado.paterno}" />
+                        <h:inputText value="#{empleadoController.empleado.materno}" />
+                        <h:inputText value="#{empleadoController.empleado.nombre}" />
+                        <h:commandButton action="#{empleadoController.doConsultar()}" 
+                                         value="Consultar" />
+                    </h:panelGrid>
+                    <br/>
+                    <h1>RESULTADO</h1>
+                    <p:dataTable var="emp" value="#{empleadoController.lista}">
+                        <p:column headerText="CÓDIGO" width="7%">
+                            <h:outputText value="#{emp.codigo}" />
+                        </p:column>
+                        <p:column headerText="NOMBRE COMPLETO" width="40%">
+                            <h:outputText value="#{emp.paterno} #{emp.materno} #{emp.nombre}" />
+                        </p:column>
+                        <p:column headerText="CIUDAD" width="10%">
+                            <h:outputText value="#{emp.ciudad}" />
+                        </p:column>
+                        <p:column headerText="DIRECCIÓN">
+                            <h:outputText value="#{emp.direccion}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body> 
+</html>

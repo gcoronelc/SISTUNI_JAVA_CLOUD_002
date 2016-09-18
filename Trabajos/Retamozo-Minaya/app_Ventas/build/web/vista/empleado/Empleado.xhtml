@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../lista.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="5">
+
+                        <h:outputLabel value="ID" />
+                        <h:outputLabel value="Dni:" />
+                        <h:outputLabel value="Apellido" />
+                        <h:outputLabel value="Usuario:" />
+                        <h:outputLabel value="" />
+
+                        <h:inputText value="#{empleadoController.empleado.idEmpleado}" />
+                        <h:inputText value="#{empleadoController.empleado.dni}" />
+                        <h:inputText value="#{empleadoController.empleado.apellido}" />
+                        <h:inputText value="#{empleadoController.empleado.usuario}" />
+                        <h:commandButton action="#{empleadoController.doListarEmpleados()}"
+                                         value="Consultar" />
+
+                    </h:panelGrid>
+                    <br/>
+                    <p:commandButton value="Nuevo Empleado" 
+                                     actionListener="#{empleadoController.prepararNuevoEmpleado()}"
+                                     oncomplete="PF('dialogNuevoEmple').show();"
+                                     update=":formNuevoEmple"/>
+                </h:form>
+
+
+                <h:form id="formMostrarEmple">
+                    <p:growl id="msg" showDetail="true"/>
+                    <p:dataTable id="tablaEmple" rows="5" paginator="true" editable="true" style="margin-bottom:20px; height: 120%" 
+                                 var="e" value="#{empleadoController.lista}" 
+                                 emptyMessage="No hay datos del Empleado">
+
+                        <p:ajax event="rowEdit" listener="#{empleadoController.actualizarEmpleado}" 
+                                update=":formMostrarEmple:msg" />
+                        <p:ajax event="rowEditCancel" listener="#{empleadoController.cancelar}" 
+                                update=":formMostrarEmple:msg" />
+
+                        <p:column style="width: 3%">
+                            <p:selectBooleanCheckbox style="float: left" value="#{e.seleccionar}"/>
+                        </p:column>
+
+                        <p:column headerText="ID" style="width: 3%;">
+                            <h:outputText style="float: left;" value="#{e.idEmpleado}"/>
+                        </p:column>
+
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{e.nombre} "/>
+                        </p:column>
+
+                        <p:column headerText="Apellido">
+                            <h:outputText value="#{e.apellido}"/>
+                        </p:column>
+
+                        <p:column headerText="Sexo" style="width: 4%">
+                            <h:outputText value="#{e.sexo}"/>
+                        </p:column>
+
+                        <p:column headerText="F. Nacimiento">
+                            <h:outputText value="#{e.fechaNac}"/>
+                        </p:column>
+
+                        <p:column headerText="Direccion">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{e.direccion}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText maxlength="20" value="#{e.direccion}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Telefono">
+                            <h:outputText value="#{e.telefono}"/>
+                        </p:column>
+
+                        <p:column headerText="Celular">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{e.celular}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText maxlength="9" value="#{e.celular}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Email">
+                            <p:cellEditor>
+                                <f:facet name="output">
+                                    <h:outputText value="#{e.email}"/>
+                                </f:facet>
+                                <f:facet name="input">
+                                    <h:inputText  value="#{e.email}"/>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Dni">
+                            <h:outputText value="#{e.dni}"/>
+                        </p:column>
+
+                        <p:column headerText="F. Ing">
+                            <h:outputText value="#{e.fechaIng}"/>
+                        </p:column>
+
+                        <p:column headerText="Sueldo" style="width: 5%">
+                            <h:outputText value="#{e.sueldo}"/>
+                        </p:column>
+
+                        <p:column headerText="Estado">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{e.estado}" /></f:facet>
+                                <f:facet name="input">
+                                    <h:selectOneMenu value="#{e.estado}" style="width:100%">
+                                        <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO"/>
+                                        <f:selectItem itemLabel="DESACTIVADO" itemValue="DESACTIVADO"/>
+                                    </h:selectOneMenu>
+                                </f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Usuario">
+                            <h:outputText value="#{e.usuario}"/>
+                        </p:column>
+
+                        <p:column headerText="Tipo de Usuario">
+                            <h:outputText value="#{e.usu.descripcion}"/>
+                        </p:column>
+
+                        <p:column style="width: 32px;">
+                            <p:rowEditor />
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:commandButton value="Eliminar" actionListener="#{empleadoController.eliminarEmpleado()}" 
+                                     update=":formMostrarEmple" icon="ui-icon-trash">
+                        <p:confirm message="Seguro que quieres Eliminar?" 
+                                   header="Aviso" icon="ui-icon.alert"/>
+                    </p:commandButton>
+                    <p:confirmDialog global="true">
+                        <p:commandButton value="SI" type="button" icon="ui-icon-check" 
+                                         styleClass="ui-confirmdialog-yes"/>
+                        <p:commandButton value="NO" type="button" icon="ui-icon-close" 
+                                         styleClass="ui-confirmdialog-no"/>
+                    </p:confirmDialog>
+
+                    <br/>
+                </h:form>
+                
+                <h:form id="formNuevoEmple">
+                    <p:dialog id="dlgNuevoEmple" widgetVar="dialogNuevoEmple" 
+                              resizable="false" showEffect="explode" hideEffect="explode" 
+                              modal="true">
+                        <p:panelGrid columns="4" style="margin: 0 auto;">
+
+                            <p:outputLabel style="float: left;" value="Dni"/>
+                            <p:inputText maxlength="8"  value="#{empleadoController.empleado.dni}"/>
+
+                            <p:outputLabel style="float: left;" value="Email"/>
+                            <p:inputText  value="#{empleadoController.empleado.email}"/>
+
+                            <p:outputLabel style="color: red; float: left;" value="Apellido"/>
+                            <p:inputText  value="#{empleadoController.empleado.apellido}" required="true"/>
+
+                            <p:outputLabel style="color: red; float: left;" value="F. Nacimiento"/>
+                            <p:calendar id="german" value="#{empleadoController.empleado.fechaNac}" 
+                                        locale="de" navigator="true" pattern="dd-MM-yyyy" required="true"/>
+
+                            <p:outputLabel style="color: red; color: red; float: left;" value="Nombre"/>
+                            <p:inputText  value="#{empleadoController.empleado.nombre}" required="true"/>
+
+                            <p:outputLabel style="float: left;" value="Sueldo"/>
+                            <p:inputText  value="#{empleadoController.empleado.sueldo}"/>
+
+                            <p:outputLabel style="color: red; float: left;" value="Sexo"/>
+                            <p:selectOneMenu style="float: left;" id="idSEX" value="#{empleadoController.empleado.estado}" required="true">
+                                <f:selectItem itemLabel="--- Seleccione ---" itemValue=""/>
+                                <f:selectItem itemLabel="MASCULINO" itemValue="M"/>
+                                <f:selectItem itemLabel="FEMENINO" itemValue="F"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel  style="color: red; float: left;" value="Estado"/>
+                            <p:selectOneMenu style="float: left;" id="idconsola" value="#{empleadoController.empleado.estado}" required="true">
+                                <f:selectItem itemLabel="--- Seleccione ---" itemValue="DESACTIVADO"/>
+                                <f:selectItem itemLabel="ACTIVO" itemValue="ACTIVO"/>
+                                <f:selectItem itemLabel="DESACTIVADO" itemValue="DESACTIVADO"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel style="float: left;" value="Direccion"/>
+                            <p:inputText  value="#{empleadoController.empleado.direccion}"/>
+
+                            <p:outputLabel style="color: red; float: left;" value="F. Ingreso"/>
+                            <p:calendar id="popup" value="#{empleadoController.empleado.fechaIng}" pattern="dd-MM-yyyy" required="true"/>
+
+                            <p:outputLabel style="float: left;" value="Telefono"/>
+                            <p:inputText maxlength="7" value="#{empleadoController.empleado.telefono}"/>
+
+                            <p:outputLabel style="float: left;" value="Usuario"/>
+                            <p:inputText  value="#{empleadoController.empleado.usuario}"/>
+
+                            <p:outputLabel style="float: left;" value="Celular"/>
+                            <p:inputText maxlength="9" value="#{empleadoController.empleado.celular}"/>
+
+                            <p:outputLabel style="float: left;" value="Contraseña"/>
+                            <p:password  value="#{empleadoController.contraseña2}"/>
+
+                            <p:outputLabel style="color: red; float: left;" value="Tipo de Usuario"/>
+                            <p:selectOneMenu style="float: left;" id="U" value="#{empleadoController.empleado.usu.id}" required="true">
+                                <f:selectItem itemLabel="--- Seleccione ---"/>
+                                <f:selectItems value="#{empleadoController.listaUsuario}"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel style="float: left;" value="Confirmar Contraseña"/>
+                            <p:password  value="#{empleadoController.empleado.contraseña}"/>
+
+                        </p:panelGrid>
+                        <p:commandButton value="Guardar" actionListener="#{empleadoController.insertarEmpleado()}"
+                                         update=":formMostrarEmple:tablaEmple" 
+                                         oncomplete="PF('dialogNuevoEmple').hide();"/>
+
+                        <p:commandButton value="Cancelar" onclick="PF('dialogNuevoEmple').hide();"/>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

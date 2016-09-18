@@ -1,0 +1,355 @@
+body 
+{
+    font-family: Arial, Helvetica, sans-serif;
+    /*font-family:Verdana;*/
+}
+table
+{
+    width:100%;
+}
+
+#lblNoRegistros
+{
+    line-height:16px;
+    background-color:#F4F2F2;
+    font-size:11px;
+    color:#000;
+    padding: 0px 5px;
+    border-left:1px solid #999;
+    border-right:1px solid #999;
+    /*border-top:1px solid #999;*/
+    border-bottom:1px solid #999;
+    text-align:left;
+    width:100%;
+}
+
+/* I. GRILLAS Y TABLAS */
+.grilla{ margin:0px; padding:0px; border-collapse:collapse; border-spacing:0; }
+.grilla thead tr{ }
+.grilla thead th{ font-weight:bold; background-color:#465c71; font-size:11px; color:#fff; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999;padding-top:5px;padding-bottom:5px; line-height:14px; }
+.grilla tbody tr{ color:#000; }
+.grilla tbody tr:hover{ background-color:#FFC; }
+.grilla tbody td{ border:1px solid #DDD; border-top:none; text-align:left; font-size:11px; line-height:14px; padding: 3px 2px 0px 2px;}
+.grilla tbody th{ border:1px solid #DDD; border-top:none; vertical-align:middle; }
+.grilla tbody th a{ text-decoration:none; display:block; padding:0 15px; }
+.grilla tfoot tr{ color:#000; }
+.grilla tfoot tr:hover{ background-color:#FFC; }
+.grilla tfoot td{ border:1px solid #DDD; border-top:none; text-align:center; font-size:12px; line-height:14px; padding: 3px 0px; color:#F00;}
+.grilla tfoot th{ border:1px solid #DDD; font-weight:bold; background-color:#F9DFDD; line-height:14px; font-size:12px; color:#EEE; padding: 3px 0px; }
+
+.grillaThin{ font-family:Verdana;margin:0px; padding:0px; border-collapse:collapse; border-spacing:0; }
+.grillaThin thead tr{ }
+.grillaThin thead th{ font-weight:normal;background-color:#465c71; font-size:10px; color:#fff; padding: 0px 2px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999;padding-top:6px;padding-bottom:5px; line-height:10px; }
+.grillaThin tbody tr{ color:#000; }
+.grillaThin tbody tr:hover{ background-color:#FFC; }
+.grillaThin tbody td{ border:1px solid #DDD; border-top:none; text-align:left; font-size:10px; line-height:14px; padding: 3px 2px 0px 2px;}
+.grillaThin tbody th{ border:1px solid #DDD; border-top:none; vertical-align:middle; }
+.grillaThin tbody th a{ text-decoration:none; display:block; padding:0 15px; }
+.grillaThin tfoot tr{ color:#000; }
+.grillaThin tfoot tr:hover{ background-color:#FFC; }
+.grillaThin tfoot td{ border:1px solid #DDD; border-top:none; text-align:center; font-size:12px; line-height:14px; padding: 3px 0px; color:#F00;}
+.grillaThin tfoot th{ border:1px solid #DDD; font-weight:bold; background-color:#F9DFDD; line-height:14px; font-size:12px; color:#EEE; padding: 3px 0px; }
+
+/*.grilla{
+	border-collapse: collapse; border: 0px solid #ddd; border-top:0px; width:100%; margin:0px; padding:0px; background-color:#F4F5F7;	}
+.grilla tr{}
+.grilla tr:hover{
+	background-color:#FFC;	} 
+.grilla th{
+	border-collapse: collapse; border: 2px solid #FFF; color:#FFF; padding:5px 5px; background:url(../Images/fondo_tabla2.png) left center repeat-x;
+	font-family:Arial, Helvetica, sans-serif; font-size:11px; text-align:left; line-height:16px; text-transform:uppercase; }	
+.grilla td{
+	border-collapse: collapse; border: 2px solid #FFF; color:#000; padding:5px 5PX; text-transform:uppercase; font-family:Arial, Helvetica, sans-serif; font-size:11px; line-height:10px;  text-transform:uppercase; text-align:left; }*/
+
+.tablaRegistro{ margin:0px; padding:0px; width:100%; }
+.tablaRegistro th{ font-weight:bold; background-color:#ECEAEA; line-height:30px; font-size:12px; color:#000; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999; text-align:right; }
+.tablaRegistro td{ font-weight:bold; line-height:30px; font-size:12px; color:#000; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999; text-align:left; }
+
+.tablaRegistro2{ margin:0px; padding:0px; width:100%; }
+.tablaRegistro2 th{ font-weight:bold; background-color:#ECEAEA; line-height:14px; font-size:11px; color:#000; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999; text-align:right; }
+.tablaRegistro2 td{ line-height:14px; background-color:#F4F2F2; font-size:11px; color:#000; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999; text-align:left; }
+
+.tablaRegistro2Thin{ margin:0px; padding:0px; width:100%; }
+.tablaRegistro2Thin th{ font-weight:bold;background-color:#ECEAEA; line-height:16px; font-size:10px; color:#000; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999; text-align:right; }
+.tablaRegistro2Thin td{ line-height:16px;background-color:#F4F2F2; font-size:10px; color:#000; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999; text-align:left; }
+
+.tdIngresoRed{ line-height:16px; background-color:#F4F2F2; font-size:11px; color:Red; padding: 0px 5px; border-left:1px solid #999; border-right:1px solid #999; border-top:1px solid #999; border-bottom:1px solid #999; text-align:left; }
+.tdIngreso{ line-height:16px; background-color:#FFF; font-size:11px; color:#000; padding: 0px 5px; border-left:1px solid #000; border-right:1px solid #000; border-top:1px solid #000; border-bottom:1px solid #000; text-align:left; }
+/* F. GRILLAS Y TABLAS */
+
+#tdTotalImporte
+{
+    text-align:right;
+    padding-right:15px;
+    font-size:12px;
+}
+
+/*I. Estilos para mensajes informativos*/
+.MsgInformativo, .MsgError, .MsgAlerta, .MsgExito {
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size:13px;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:10px 10px 10px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+.MsgInformativo {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../Images/info.png');
+}
+.MsgExito {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('../Images/exito.png');
+}
+.MsgAlerta {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../Images/alerta.png');
+}
+.MsgError {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../Images/error.png');
+}
+/*F. Estilos para mensajes informativos*/
+
+/*INICIO - CONTROL VALIDATOR*/
+.MsgErrorValidadorCampos
+{
+    color: #D8000C;
+}
+.validationsummary {
+	/*border: 1px solid #b08b34;*/
+	border: 1px solid #D8000C;
+	background: transparent url(../Images/warningHeader.gif) no-repeat 12px 30px;
+	/*padding: 0px 0px 13px 0px;*/
+	padding:0px;
+	font-size:12px;
+	width:100%;
+	margin-top:5px;
+}
+.validationheader {
+	left: 0px;
+	position: relative;
+	font-size: 11px;
+	/*background-color: #e5d9bd;*/
+	background-color: #D8000C;
+	/*color: #56300a;*/
+	color: #FFFFFF;
+	height: 14px;
+	font-weight: bold;
+	border-bottom: 1px solid #b08b34;
+	padding-top: 3px;
+}
+.validationsummary ul {
+	padding-top: 5px;
+	padding-left: 45px;
+	list-style:none;
+	font-size: 11px;
+	/*color:#982b12;*/
+	color: #D8000C;
+	font-style:italic;
+}
+.validationsummary ul li {
+	padding: 2px 0px 0px 15px;
+	/*background-image:url(../Images/Warning.gif);*/
+	background-image:url(../Images/exclamation.gif);
+	background-position:0px 3px;
+	background-repeat:no-repeat;
+}
+/*FIN - CONTROL VALIDATOR*/
+
+
+/*ERROR INGRESO CARACTERES*/
+.showErrInputType {
+	/*display: inline !important;*/
+	visibility : visible !important;
+	color : #FF0000;
+	font-family : Verdana;
+	font-size : 10px;
+	background-color: #FFFF99;
+	border-color : #FF9900;
+	border-style : solid;
+	border-width : 1px;
+	padding-top    : 2px;
+	padding-bottom : 2px;
+	padding-right  : 2px;
+	padding-left   : 2px;
+	z-index: 999999; 
+}
+
+.hideErrInputType {
+	/*display : none !important;*/
+	visibility : hidden !important;
+} 
+/*FIN - ERROR INGRESO CARACTERES*/
+
+/*INICIO - BOTONES*/
+.btnControl_buscar{
+ background:url(../Images/buscar.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:100px; border:none;}
+.btnControl_buscar:hover{
+ background:url(../Images/buscar.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+.btnControl_save_new{
+ background:url(../Images/save_new.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:30px; border:none;} 
+.btnControl_save{
+ background:url(../Images/save.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:100px; border:none;}
+.btnControl_save:hover{
+ background:url(../Images/save.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+ 
+.btnControl_nuevo{
+ background:url(../Images/nuevo.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:100px; border:none; padding-right:0px;}
+.btnControl_nuevo:hover{
+ background:url(../Images/nuevo.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none; padding-right:0px;}
+
+.btnControl_cancel{
+ background:url(../Images/cancel.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:100px; border:none;}
+.btnControl_cancel:hover{
+ background:url(../Images/cancel.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+
+.btnControl_check{
+ background:url(../Images/check.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:100px; border:none;}
+.btnControl_check:hover{
+ background:url(../Images/check.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+
+.btnControl_notif{
+ background:url(../Images/notificar.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:100px; border:none;}
+.btnControl_notif:hover{
+ background:url(../Images/notificar.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+ 
+ .btnControl_upload{
+ background:url(../Images/subir.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+.btnControl_upload:hover{
+ background:url(../Images/subir.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+
+.btnControl_print{
+ background:url(../Images/imprimir.png) no-repeat left top; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold;	height:22px; width:100px; border:none;}
+.btnControl_print:hover{
+ background:url(../Images/imprimir.png) no-repeat left bottom; cursor:pointer; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333; font-weight:bold; height:22px; width:100px; border:none;}
+
+ .lnk:link
+ {
+     text-decoration:none;
+     font-size:16px;
+     color:#696969;
+ }
+ .lnk:visited
+ {
+     color:#696969;
+ }
+ .lnk:active
+ {
+     color:#696969;
+ }
+ .lnk:hover
+ {
+     text-decoration:underline;
+ }
+/*FIN - BOTONES*/
+
+/*INICIO - CONTROLES*/
+.chkControl
+{
+    padding:0;
+    margin:0;
+}
+.comboControl
+{
+    background-color:#FFF;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 17px;
+	line-height:10px;
+	/*padding:0px 0px 0px 0px;
+	margin:1px 0px 1px 0px;*/
+	padding:0;
+	margin:0;
+	color: #333;
+	border-collapse: collapse;
+	border: 1px solid #676363;
+	border-width:0px 0px 0px 0px;
+	border-color:Black Black Black Black;
+}
+.txtControl
+{
+	background-color:#FFF;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 14px;
+	line-height:14px;
+	padding:0px 0px 0px 0px;
+	margin:1px 0px 1px 0px;
+	color: #333;
+	border-collapse: collapse;
+	border: 1px solid #676363;
+	border-width:0px 0px 0px 0px;
+	border-color:Black Black Black Black;
+	text-transform:uppercase;
+}
+.txtControlDisabled
+{
+	background-color:#F4F2F2;
+	font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 14px;
+	line-height:14px;
+	padding:0px 0px 0px 0px;
+	margin:1px 0px 1px 0px;
+	color: #333;
+	border-collapse: collapse;
+	border: 1px solid #676363;
+	border-width:0px 0px 0px 0px;
+	border-color:Black Black Black Black;
+}
+.txtControlMayusculaDisabled
+{
+	background-color:#FFF;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 18px;
+	line-height:18px;
+	padding:0px 0px 0px 5px;
+	color: #333;
+	border-collapse: collapse;
+	border: 1px solid #CCC;
+	text-transform : uppercase;
+}
+.txtControlMayuscula,.textnumerico, .textnumericodecimal
+{
+	background-color:#FFF;
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 18px;
+	line-height:18px;
+	padding:0px 0px 0px 5px;
+	color: #333;
+	border-collapse: collapse;
+	border: 1px solid #CCC;
+	text-transform : uppercase;
+}
+.textnumerico, .textnumericodecimal
+{
+     text-align:right;
+}
+/*FIN - CONTROLES*/
+
+/*INICIO - PAGINACION*/
+.inputNroPagina
+{
+    text-align:center;
+    border-top-width:0px;
+    border-left-width:0px;
+    border-right-width:0px;
+    width:50px;
+}
+.btnIr
+{
+    color: #333333;
+    background-color: #CCCCCC;
+    border: 1px solid #021F36;
+    width:30px;
+    cursor:hand;
+}
+/*FIN - PAGINACION*/

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./plantilla/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" />
+                    
+                    <h2>MODIFICAR SUCURSAL</h2>
+                    
+                    <p:panelGrid columns="3">
+                        
+                        <p:outputLabel value="Código:" style=" border-style: none" />
+                        <p:inputText value="#{sucursalController.codigo}" id="codigo" required="true" requiredMessage="Dato es obligatorio."/>
+                        <p:message for="codigo"/>
+                        
+                        <p:outputLabel value="Nombre:" />
+                        <p:inputText value="#{sucursalController.nombre}"
+                                     id="nombre"
+                                     required="true" requiredMessage="Dato obligatorio."/>
+                        <p:message for="nombre"/>
+                        
+                        <p:outputLabel value="Ciudad :" />
+                        <p:inputText value="#{sucursalController.ciudad}"
+                                     id="ciudad"
+                                     required="true" requiredMessage="Dato obligatorio."/>
+                        <p:message for="ciudad"/>
+                        
+                        <p:outputLabel value="Dirección:" />
+                        <p:inputText value="#{sucursalController.direccion}"
+                                     id="direccion"
+                                     required="true" requiredMessage="Dato obligatorio."/>
+                        <p:message for="ciudad"/>
+                        
+                        <p:outputLabel value="" />
+                        
+                        <p:commandButton value="ACTUALIZAR"
+                                         action="#{sucursalController.doActualizar()}"
+                                         ajax="false" />
+                        <p:commandLink  value="CANCELAR"  resetValues="true" 
+                                         action="#{sucursalController.doCancelar()}"
+                                         ajax="false"/>
+                    </p:panelGrid>
+                    
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

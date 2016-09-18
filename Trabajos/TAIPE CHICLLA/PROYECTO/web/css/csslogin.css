@@ -1,0 +1,280 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    /*background:url(images/fondo_web.png) top left repeat-x #F4F4F4;*/
+    /*background-color:#F4F4F4;*/
+    background-color:#FFF;
+    font-size:11px;
+}
+
+#contenedor 
+{
+    /*background-image: url('../Images/cajaChica.jpg');*/
+}
+
+#top {
+    margin:0 auto;
+    height:85px;
+    width:980px;
+    padding-top:4px;
+} 
+#top .left_top 
+{
+    float:left;
+    width:50%;
+    text-align:left;
+    padding-top:10px;
+}
+#top .right_top 
+{
+    float:right;
+    text-align:right;
+    /*background:url(../Images/boton_top.png) top right no-repeat;*/
+    margin-right:1px;
+}
+#top .right_top a
+{
+    display:inline-block;
+    padding:15px 20px 10px 20px;
+    text-align:center;
+    background:url(../Images/boton_top.png) top left no-repeat;
+    text-decoration:none;
+    color:#333;
+}
+#top .right_top a img{}
+#top .right_top a span{ display:block; line-height:25px; font-size:10px; font-weight:bold;}
+#top .right_top a:hover{ color:#B11F16;}
+#top .right_top_fecha{ float:right; text-align:right; padding:0px 20px; display:inline-block; line-height:70px;}
+#top .close
+{
+    clear:both;
+}
+
+#wrapper 
+{
+    margin: 0 auto;
+    width: 980px;
+    padding:10px 0 20px 0;
+}
+#wrapper h1
+{
+    padding-left:15px;
+    font-size:1.2em;
+    color:#B11F16;
+    text-align:center;
+    font-weight:700;
+    margin:20px 0 10px 0
+}
+#wrapper h2
+{
+    /*padding-left:15px;*/
+    font-size:1.6em;
+    color:#B11F16;
+    text-align:center;
+    font-weight:700;
+    /*margin:20px 0 10px 0*/
+    margin:0px;
+    text-align:center;
+}
+#wrapper h3
+{
+    background:url(Images/arrow_right.png) left center no-repeat;
+    padding-left:15px;
+    font-size:1.2em;
+    color:#B11F16;
+    text-align:left;
+    font-weight:700;
+    margin:20px 0 10px 0
+}
+#wrapper h4
+{
+    font-size:1.2em;
+    color:#B11F16;
+    text-align:left;
+    font-weight:700;
+    line-height:30px;
+}
+#wrapper h5
+{
+    font-size:1.2em;
+    color:#B11F16;
+    text-align:center;
+    font-weight:700;
+    line-height:30px;
+}
+
+#login  
+{
+    background:url(../images/login-TD.jpg) left bottom no-repeat; 
+    width:800px;
+    height:497px;
+    margin:0 auto; 
+    /*padding:20px 30px;*/
+    /*padding-top:100px;*/
+    border:1px solid; 
+    border-color: #EEE #DDD #CCC; 
+    margin-top:80px; 
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px #000;
+    webkit-border-radius: 20px;  /* Safari  */
+    moz-border-radius: 20px;     /* Firefox */
+}
+#login span
+{
+    display:block;
+    text-align:left;
+    color:Maroon;
+}
+
+#loginControls
+{
+    margin-top:70px;
+    margin-left:450px;
+}
+
+#tablalogin
+{
+    width:320px;
+}
+#tablalogin tr
+{
+}
+#tablalogin td
+{
+    text-align:left;
+    font-size:11px;
+    color:#666;
+    padding: 3px 0px;
+    line-height:25px;
+}  
+#tablalogin th
+{
+    text-align:left;
+    font-weight:normal;
+    font-size:11px;
+    color:#666;
+    line-height:25px;
+    padding: 3px 0px;
+}
+
+hr
+{
+    height:1px;
+    border: 0;
+    margin-top:5px;
+    margin-bottom:5px;
+    background:#DDD;
+}
+.catpcha
+{
+    background-color:#FFF;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 25px;
+    padding:0px 0px 0px 0px;
+    color: #000;
+    border: 1px solid #E0E4E9;
+    line-height:20px;
+    text-transform:uppercase;
+    text-align:center;
+}
+.user
+{
+    background:url(../images/user.png) no-repeat 5px 6px;
+    background-color:#FFF;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 25px;
+    padding:0px 0px 0px 30px;
+    color: #000;
+    border: 1px solid #E0E4E9;
+    line-height:25px;
+    text-transform:uppercase;
+}
+.password
+{
+    background:url(../images/keys.png) no-repeat 5px 6px;
+    background-color:#FFF;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 25px;
+    padding:0px 0px 0px 30px;
+    color: #000;
+    border: 1px solid #E0E4E9;
+    line-height:25px;
+}	
+.btnIngreso
+{
+    background:url(../images/boton.jpg) no-repeat center top;
+    cursor:pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #FFF;
+    font-weight:bold;
+    height: 30px;
+    width: 130px;
+    border:none;
+    margin:0px;
+}
+.btnIngreso:hover
+{
+    color: #FFF;
+}
+
+/*ENLACES*/ 
+a.salir{
+ color:#333; font-size:10px; line-height:22px; width:100px; display:inline-block; text-decoration:none; background:url(../Images/salir.png) no-repeat left top; text-align:left; margin:0px 5px; font-weight:bold; text-align:center; font-family:Helvetica, Arial, sans-serif}
+a.salir:hover{
+ background:url(Images/salir.png) no-repeat left bottom; }
+/*ENLACES*/ 
+ 
+/*TEXT*/ 
+.titulo{ 
+ color:#B11F16; font-size:13px; font-family:Helvetica, Arial, sans-serif; display:block; text-align:left; font-weight:bold; line-height:30px;}
+/*TEXT*/ 
+
+/*BOTONES ESPECIALES*/
+ .celdaSubTitulo
+{
+	color:#B11F16;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:800;
+	/*display:block;*/
+	text-align:left;
+	line-height:25px;
+	border: 1px dashed #ddd;
+	margin:5px 0px;
+	padding:5px 10px;
+	/*background-color:#F8F8F8;*/
+	text-align:left;
+	text-transform:uppercase;
+}
+.textCamposRequeridos
+{
+	text-align:left;
+	font-family: Arial;
+	font-size: 10px;
+	color:Red;
+	text-transform:none;
+	margin-top:0px;
+	margin-bottom:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+	/*padding-left:20px;*/
+}
+.lblCamposRequeridos
+{
+	text-align:left;
+	font-family: Arial;
+	font-size: 10px;
+	color:Red;
+}

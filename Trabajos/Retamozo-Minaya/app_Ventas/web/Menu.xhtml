@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="/lista.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <div id="content">
+                <div id="content_area">
+                    <h3 style="font-family: Arial, 'Arial CE', 'Lucida Grande CE', lucida, 'Helvetica CE', sans-serif;
+                        font-size: 20px;  
+                        border-bottom: 0px solid #AFAFAF; ">
+                        <center>
+                            Bienvenido(a) a Punto de Ventas IncanatoIT. <br/>¡Seleccione un módulo; debajo, para empezar!<br/>
+                        </center>
+                        <br/>
+                    </h3>
+                    <hr/>
+                    <div style="width: 90%; margin: auto;">
+                        <h:commandLink action="#{clienteController.doListar()}">
+                            <div class="pull-left radio-5px" style="width: 23%; 
+                                 margin: 5px; padding: 5px; border: 1px solid #036fab;">
+                                <h:graphicImage name="./imagenes/cliente.png" style="float: left" />
+                                <div class="pull-left" style="margin-left: 10px; width: 45%; ">
+                                    <div>
+                                        <h5>Cliente</h5>
+                                    </div>
+                                    <div>Agregar, Actualizar, Eliminar y Buscar clientes</div>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        
+                        <h:commandLink  action="#{ventaController.dolistarVentas()}">
+                            <div class="pull-left radio-5px" style="width: 23%; 
+                                 margin: 5px; padding: 5px; border: 1px solid #036fab;">
+                               <h:graphicImage name="./imagenes/venta.png" style="float: left" />
+                                <div class="pull-left" style="margin-left: 10px; width: 45%; ">
+                                    <div>
+                                        <h5>Ventas</h5>
+                                    </div>
+                                    <div>Agregar, Actualizar, Eliminar y Buscar ventas</div>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        
+                        <h:commandLink  action="#{categoriaController.listarCategoria()}">
+                            <div class="pull-left radio-5px" style="width: 23%; 
+                                 margin: 5px; padding: 5px; border: 1px solid #036fab;">
+                                <h:graphicImage name="./imagenes/categoria.png" style="float: left" />
+                                <div class="pull-left" style="margin-left: 10px; width: 45%; ">
+                                    <div>
+                                        <h5>Categoria</h5>
+                                    </div>
+                                    <div>Agregar, Actualizar, Eliminar y Buscar categoria</div>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{detalleVentaController.doListarDetalleVenta()}">
+                            <div class="pull-left radio-5px" style="width: 23%; 
+                                 margin: 5px; padding: 5px; border: 1px solid #036fab;">
+                                <h:graphicImage name="./imagenes/detaVenta.png" style="float: left" />
+                                <div class="pull-left" style="margin-left: 10px; width: 45%; ">
+                                    <div>
+                                        <h5>Detalle de Venta</h5>
+                                    </div>
+                                    <div>Agregar, Actualizar, Eliminar y Buscar categoria</div>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{productoController.dolistarProducto()}">
+                            <div class="pull-left radio-5px" style="width: 23%; 
+                                 margin: 5px; padding: 5px; border: 1px solid #036fab;">
+                                <h:graphicImage name="./imagenes/producto.png" style="float: left" />
+                                <div class="pull-left" style="margin-left: 10px; width: 45%; ">
+                                    <div>
+                                        <h5>Producto</h5>
+                                    </div>
+                                    <div>Agregar, Actualizar, Eliminar y Buscar Producto</div>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{tipoDocuController.listarTipoDocumentos()}">
+                            <div class="pull-left radio-5px" style="width: 23%; 
+                                 margin: 5px; padding: 5px; border: 1px solid #036fab;">
+                                <h:graphicImage name="./imagenes/tipoDocu.png" style="float: left" />
+                                <div class="pull-left" style="margin-left: 10px; width: 45%; ">
+                                    <div>
+                                        <h5>Tipo de Documento</h5>
+                                    </div>
+                                    <div>Agregar, Actualizar, Eliminar y Buscar Documento</div>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        
+                        <h:commandLink action="#{empleadoController.doListarEmpleados()}">
+                            <div class="pull-left radio-5px" style="width: 23%; 
+                                 margin: 5px; padding: 5px; border: 1px solid #036fab;">
+                                <h:graphicImage name="./imagenes/empleado.png" style="float: left" />
+                                <div class="pull-left" style="margin-left: 10px; width: 45%; ">
+                                    <div>
+                                        <h5>Empleado</h5>
+                                    </div>
+                                    <div>Agregar, Actualizar, Eliminar y Buscar Empleado</div>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                        <a></a>
+                        <a></a>
+                        <a></a>
+                        <a></a>
+                    </div>
+                </div>
+            </div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,69 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	font-size: 10px;
+	background-color: #B1FDF0;
+}
+
+.msgError{
+	margin: 5px;
+	background-color: #FFEBE4;
+	color: #6E6E6E;
+	padding: 5px 10px;
+}
+
+#divPAGINA{
+	width: 900px;
+	background-color: #5882FA;
+	margin: 10px auto;
+	padding: 10px;
+}
+
+#divCABECERA{
+	width: 880px;
+	background-color: #22415F;
+	padding: 10px;
+}
+
+#divMENU{
+	width: 880px;
+  background-color: #1E2A37;
+  padding: 10px;
+}
+
+
+#divWORK{
+	width: 880px;
+  background-color: #DCE7FF;
+  padding: 10px;
+}
+
+h1{
+	color: #0174DF;
+	font-size: 14px;
+	border-bottom-color: #0174DF;
+	border-bottom-style: solid;
+	border-bottom-width: 2px; 
+}
+
+.btnProcesar{
+	background-color: #FACF6C;
+	color: white;
+	height: 30px;
+	padding: 5px;
+}
+
+.tablaCabecera{
+	background-color: #001AFF;
+  color: white;
+}
+
+.tablaFila1{
+	background-color: #E5FFFF;
+  color: #959490;
+}
+
+.tablaFila2{
+  background-color: #AFE476;
+  color: #2E4B0E;
+}

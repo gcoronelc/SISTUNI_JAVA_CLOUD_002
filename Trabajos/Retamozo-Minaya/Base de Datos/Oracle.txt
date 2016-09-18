@@ -1,0 +1,256 @@
+CREATE TABLE CATEGORIA (
+IdCategoria number(11) not null,
+Descripcion varchar(100) null,
+Primary key (IdCategoria)
+);
+
+
+CREATE TABLE PRODUCTO(
+ IdProducto number(11) NOT NULL, 
+Codigo varchar(50) NULL, 
+Nombre varchar(100) NOT NULL, 
+Descripcion varchar(100) null, 
+Stock number(8,2) NULL, 
+StockMin number(8,2) NULL, 
+PrecioCosto number(8,2) NULL, 
+PrecioVenta number(8,2) NULL, 
+Utilidad number(8,2) NULL, 
+Estado varchar(30) NOT NULL, 
+Imagen varchar(100) NULL, 
+IdCategoria number(11) NOT NULL, 
+PRIMARY KEY(IdProducto)
+CONSTRAINT fk_catePro FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria));
+
+
+CREATE TABLE CLIENTE (
+  IdCliente NUMBER(11,0) NOT NULL,
+  Nombre varchar(100) NOT NULL,
+  Ruc varchar(11) NULL,
+  Dni varchar(8) NULL,
+  Direccion varchar(50) NULL,
+  Telefono varchar(15) NULL,
+  Obsv VARCHAR(100),
+  Usuario varchar(30) NULL,
+  Contrasena varchar(10) NULL,
+  PRIMARY KEY (IdCliente)
+);
+
+
+CREATE TABLE TIPOUSUARIO (
+  IdTipoUsuario NUMBER(11) NOT NULL,
+  Descripcion varchar(20) NOT NULL,
+  PRIMARY KEY (IdTipoUsuario)
+)
+
+CREATE TABLE empleado (
+  IdEmpleado number(11) NOT NULL,
+  Nombre varchar(50) NOT NULL,
+  Apellido varchar(80) NOT NULL,
+  Sexo varchar(1) NOT NULL,
+  FechaNac date NOT NULL,
+  Direccion varchar(100) NULL,
+  Telefono varchar(10) NULL,
+  Celular varchar(15) NULL,
+  Email varchar(80) NULL,
+  Dni varchar(8) NULL,
+  FechaIng date NOT NULL,
+  Sueldo number(8,2) NULL,
+  Estado varchar(30) NOT NULL,
+  Usuario varchar(20) NULL,
+  Contrasena varchar(100),
+  IdTipoUsuario number(11) NOT NULL,
+  PRIMARY KEY (IdEmpleado),
+  CONSTRAINT fk_UsuEmple FOREIGN KEY (IdTipoUsuario) REFERENCES TIPOUSUARIO(IdTipoUsuario)
+) 
+
+CREATE TABLE proveedor (
+  IdProveedor number(11) NOT NULL ,
+  Nombre varchar(100) NOT NULL,
+  Ruc varchar(11) NULL,
+  Dni varchar(8) NULL,
+  Direccion varchar(100) NULL,
+  Telefono varchar(10)  NULL,
+  Celular varchar(15) NULL,
+  Email varchar(80) DEFAULT NULL,
+  Cuenta1 varchar(50) DEFAULT NULL,
+  Cuenta2 varchar(50) DEFAULT NULL,
+  Estado varchar(30) NOT NULL,
+  Obsv varchar(100),
+  PRIMARY KEY (IdProveedor)
+)
+
+CREATE TABLE tipodocumento (
+  IdTipoDocumento number(11) NOT NULL,
+  Descripcion varchar(80) NOT NULL,
+  PRIMARY KEY (IdTipoDocumento)
+);
+
+CREATE TABLE venta (
+  IdVenta number(11) NOT NULL,
+  IdTipoDocumento number(11) NOT NULL,
+  IdCliente number(11) NOT NULL,
+  IdEmpleado number(11) NOT NULL,
+  Serie varchar(5) DEFAULT NULL,
+  Numero varchar(20) DEFAULT NULL,
+  Fecha date NOT NULL,
+  TotalVenta number(8,2) NOT NULL,
+  Igv number(8,2) NOT NULL,
+  TotalPagar number(8,2) NOT NULL,
+  Estado varchar(30) NOT NULL,
+  PRIMARY KEY (IdVenta),
+ CONSTRAINT fk_DocuVen FOREIGN KEY(IdTipoDocumento) REFERENCES TIPODOCUMENTO(IdTipoDocumento),
+ CONSTRAINT fk_ClieVen FOREIGN KEY(IdCliente) REFERENCES CLIENTE(IdCliente),
+ CONSTRAINT fk_EmpleVen FOREIGN KEY(IdEmpleado) REFERENCES EMPLEADO(IdEmpleado)
+);
+
+CREATE TABLE DETALLEVENTA (
+  IdVenta number(11) NOT NULL,
+  IdProducto number(11) NOT NULL,
+  Cantidad number(8,2) NOT NULL,
+  Costo number(8,2) NOT NULL,
+  Precio number(8,2) NOT NULL,
+  Total number(8,2) NOT NULL,
+  CONSTRAINT fk_DetalleVenta_Venta FOREIGN KEY(IdVenta) REFERENCES VENTA(IdVenta),
+  CONSTRAINT fk_DetalleVenta_Producto FOREIGN KEY(IdProducto) REFERENCES PRODUCTO(IdProducto)
+);
+
+CREATE TABLE compra (
+  IdCompra number(11) NOT NULL ,
+  IdTipoDocumento number(11) NOT NULL,
+  IdProveedor number(11) NOT NULL,
+  IdEmpleado number(11) NOT NULL,
+  Numero varchar(20) DEFAULT NULL,
+  Fecha date DEFAULT NULL,
+  SubTotal number(8,2) DEFAULT NULL,
+  Igv number(8,2) DEFAULT NULL,
+  Total number(8,2) DEFAULT NULL,
+  Estado varchar(30) DEFAULT NULL,
+  PRIMARY KEY (IdCompra),
+  CONSTRAINT fk_Compra_Proveedor1_idx FOREIGN KEY(IdProveedor) REFERENCES PROVEEDOR(IdProveedor),
+  CONSTRAINT fk_Compra_Empleado1_idx FOREIGN KEY(IdEmpleado) REFERENCES EMPLEADO(IdEmpleado),
+  CONSTRAINT fk_Compra_TipoDocumento1_idx FOREIGN KEY(IdTipoDocumento) REFERENCES TIPODOCUMENTO(IdTipoDocumento)
+);
+
+CREATE TABLE detallecompra (
+  IdCompra number(11) NOT NULL,
+  IdProducto number(11) NOT NULL,
+  Cantidad number(8,2) NOT NULL,
+  Precio number(8,2) NOT NULL,
+  Total number(8,2) NOT NULL,
+  CONSTRAINT fk_DetalleCompra_Compra1_idx FOREIGN KEY(IdCompra) REFERENCES COMPRA(IdCompra),
+  CONSTRAINT fk_DetalleCompra_Producto1_idx FOREIGN KEY (IdProducto) REFERENCES PRODUCTO(IdProducto)
+);
+
+
+INSERT INTO categoria (IdCategoria, Descripcion) VALUES(1, 'Tecnologia');
+INSERT INTO categoria (IdCategoria, Descripcion) VALUES(2, 'Farmacos');
+INSERT INTO categoria (IdCategoria, Descripcion) VALUES(3, 'Bebidas');
+INSERT INTO categoria (IdCategoria, Descripcion) VALUES(4, 'Cereales');
+INSERT INTO categoria (IdCategoria, Descripcion) VALUES(5, 'Software');
+
+
+
+INSERT INTO cliente (IdCliente, Nombre, Ruc, Dni, Direccion, Telefono, Obsv, Usuario, Contrasena) VALUES
+(1, 'PUBLICO GENERAL', '20477157771', '47715777', 'Chiclayo', '455630', 'aaa', 'cliente', '123');
+
+
+
+INSERT INTO tipodocumento (IdTipoDocumento, Descripcion) VALUES(1, 'BOLETA');
+INSERT INTO tipodocumento (IdTipoDocumento, Descripcion) VALUES(2, 'FACTURA');
+INSERT INTO tipodocumento (IdTipoDocumento, Descripcion) VALUES(3, 'TICKET');
+
+
+
+
+INSERT INTO tipousuario (IdTipoUsuario, Descripcion) VALUES
+(1, 'ADMINISTRADOR');
+
+INSERT INTO tipousuario (IdTipoUsuario, Descripcion) VALUES(2, 'CAJERO');
+
+
+
+
+INSERT INTO proveedor (IdProveedor, Nombre, Ruc, Dni, Direccion, Telefono, Celular, Email, Cuenta1, Cuenta2, Estado, Obsv) VALUES(1, 'SIN PROVEEDOR', '', '', '', '', '', '', '', '', 'ACTIVO', '');
+
+
+
+
+INSERT INTO producto (IdProducto, Codigo, Nombre, Descripcion, Stock, StockMin, PrecioCosto, PrecioVenta, Utilidad, Estado, Imagen, IdCategoria) VALUES(1, '11', 'Monitor', 'monitor LCD pantalla de retina liquida', 10.00, 2.00, 80.00, 100.00, 20.00, 'ACTIVO', '', 1);
+
+INSERT INTO producto (IdProducto, Codigo, Nombre, Descripcion, Stock, StockMin, PrecioCosto, PrecioVenta, Utilidad, Estado, Imagen, IdCategoria) VALUES(2, '22', 'Teclado Multifuncional', 'Teclado ergonomico', -4.00, 3.00, 25.00, 45.00, 20.00, 'ACTIVO', '', 1);
+
+INSERT INTO producto (IdProducto, Codigo, Nombre, Descripcion, Stock, StockMin, PrecioCosto, PrecioVenta, Utilidad, Estado, Imagen, IdCategoria) VALUES(3, '33', 'CPU', 'Unidad Central de Procesamiento', 11.00, 5.00, 322.58, 482.24, 159.66, 'ACTIVO', '', 1);
+
+INSERT INTO producto (IdProducto, Codigo, Nombre, Descripcion, Stock, StockMin, PrecioCosto, PrecioVenta, Utilidad, Estado, Imagen, IdCategoria) VALUES(4, '123567', 'Mouse Inalambrico', 'Inalambrico', 46.00, 50.00, 40.00, 40.00, 0.00, 'ACTIVO', 'mouse.jpg', 1);
+
+INSERT INTO producto (IdProducto, Codigo, Nombre, Descripcion, Stock, StockMin, PrecioCosto, PrecioVenta, Utilidad, Estado, Imagen, IdCategoria) VALUES(5, '823824723', 'amoxicilina', '', 118.00, 120.00, 2.00, 2.00, 0.00, 'ACTIVO', '', 2);
+
+
+
+
+INSERT INTO empleado(IdEmpleado, Nombre, Apellido, Sexo, FechaNac, Direccion, Telefono, Celular, Email, Dni, FechaIng, Sueldo, Estado, Usuario, Contrasena, IdTipoUsuario) VALUES(1, 'Juan Carlos', 'Arcila Diaz', 'M', '15-06-2013', 'Chiclayo - Peru', '455630', '979026684', 'jcarlos.ad7@gmail.com', '47715777', '15-06-2013', 2500.00, 'ACTIVO', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES
+(1, 1, 1, 1, '001', 'C0000000001', '20-04-2015', 1416.71, 255.01, 1671.72, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(2, 1, 1, 1, '001', 'C0000000002', '20-04-2015', 33.90, 6.10, 40.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(3, 1, 1, 1, '001', 'C0000000003', '20-04-2015', 38.14, 6.87, 45.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(4, 1, 1, 1, '001', 'C0000000004', '20-04-2015', 38.14, 6.87, 45.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(5, 1, 1, 1, '001', 'C0000000005', '20-04-2015', 1264.17, 227.55, 1491.72, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(6, 1, 1, 1, '001', 'C0000000006', '20-04-2015', 38.14, 6.87, 45.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(7, 1, 1, 1, '001', 'C0000000007', '20-04-2015', 103.39, 18.61, 122.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(8, 1, 1, 1, '001', 'C0000000008', '22-04-2015', 76.27, 13.73, 90.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(9, 1, 1, 1, 'C0000', 'C0000000008', '12-05-2015', 68.50, 18.50, 70.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(10, 2, 1, 1, '001', 'C0000000010', '23-04-2015', 114.41, 20.59, 135.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(11, 1, 1, 1, '001', 'C0000000011', '23-04-2015', 76.27, 13.73, 90.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(12, 1, 1, 1, '001', 'C0000000012', '23-04-2015', 76.27, 13.73, 90.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(13, 1, 1, 1, '001', 'C0000000013', '23-04-2015', 152.54, 27.46, 180.00, 'EMITIDO');
+
+INSERT INTO venta (IdVenta, IdTipoDocumento, IdCliente, IdEmpleado, Serie, Numero, Fecha, TotalVenta, Igv, TotalPagar, Estado) VALUES(14, 1, 1, 1, '001', 'C0000000014', '26-04-2015', 1.69, 0.30, 2.00, 'EMITIDO');
+
+
+
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(1, 3, 3.00, 322.58, 482.24, 1446.72);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(1, 2, 5.00, 25.00, 45.00, 225.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(2, 4, 1.00, 40.00, 40.00, 40.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(3, 2, 1.00, 25.00, 45.00, 45.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(4, 2, 1.00, 25.00, 45.00, 45.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(5, 3, 3.00, 322.58, 482.24, 1446.72);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(5, 2, 1.00, 25.00, 45.00, 45.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(6, 2, 1.00, 25.00, 45.00, 45.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(7, 4, 3.00, 40.00, 40.00, 120.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(7, 5, 1.00, 2.00, 2.00, 2.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(8, 2, 2.00, 25.00, 45.00, 90.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(9, 2, 2.00, 25.00, 50.00, 100.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(9, 3, 3.00, 328.58, 482.24, 1446.72);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(10, 2, 3.00, 25.00, 45.00, 135.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(11, 2, 2.00, 25.00, 45.00, 90.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(12, 2, 2.00, 25.00, 45.00, 90.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(13, 2, 4.00, 25.00, 45.00, 180.00);
+INSERT INTO detalleventa (IdVenta, IdProducto, Cantidad, Costo, Precio, Total) VALUES(14, 5, 1.00, 2.00, 2.00, 2.00);
+
+
+
+INSERT INTO compra (IdCompra, IdTipoDocumento, IdProveedor, IdEmpleado, Numero, Fecha, SubTotal, Igv, Total, Estado) VALUES(1, 1, 1, 1, 'C0000000001', '20-04-2015', 273.37, 49.21, 322.58, 'EMITIDO');
+INSERT INTO compra (IdCompra, IdTipoDocumento, IdProveedor, IdEmpleado, Numero, Fecha, SubTotal, Igv, Total, Estado) VALUES(2, 1, 1, 1, 'C0000000002', '20-04-2015', 21.19, 3.81, 25.00, 'EMITIDO');
+INSERT INTO compra (IdCompra, IdTipoDocumento, IdProveedor, IdEmpleado, Numero, Fecha, SubTotal, Igv, Total, Estado) VALUES(3, 1, 1, 1, 'C0000000003', '20-04-2015', 1366.86, 246.03, 1612.90, 'EMITIDO');
+INSERT INTO compra (IdCompra, IdTipoDocumento, IdProveedor, IdEmpleado, Numero, Fecha, SubTotal, Igv, Total, Estado) VALUES(4, 2, 1, 1, 'C0000000004', '23-04-2015', 379.31, 68.28, 447.58, 'EMITIDO');
+
+
+
+INSERT INTO detallecompra (IdCompra, IdProducto, Cantidad, Precio, Total) VALUES(1, 3, 1.00, 322.58, 322.58);
+INSERT INTO detallecompra (IdCompra, IdProducto, Cantidad, Precio, Total) VALUES(2, 2, 1.00, 25.00, 25.00);
+INSERT INTO detallecompra (IdCompra, IdProducto, Cantidad, Precio, Total) VALUES(3, 3, 5.00, 322.58, 1612.90);
+INSERT INTO detallecompra (IdCompra, IdProducto, Cantidad, Precio, Total) VALUES(4, 3, 1.00, 322.58, 322.58);
+INSERT INTO detallecompra (IdCompra, IdProducto, Cantidad, Precio, Total) VALUES(4, 2, 5.00, 25.00, 125.00);
